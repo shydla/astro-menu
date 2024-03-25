@@ -55,12 +55,21 @@ import Layout from '../layouts/Layout.astro'
     let test = document.getElementById('test')
     let div = document.createElement('div')
     tg.ready()
-    div.innerHTML = tg.MainButton.text
-    tg.MainButton.setText('Тест')
-    tg.MainButton.show()
+    div.innerHTML = tg.initData
+    tg.MainButton.setText('Сохранить настройки')
 
-    test && test.appendChild(div)
-    console.log(tg.MainButton.text)
+    //изменяем текст кнопки иначе
+    tg.MainButton.textColor = '#F55353' //изменяем цвет текста кнопки
+    tg.MainButton.color = '#143F6B' //изменяем цвет бэкграунда кнопки
+    tg.MainButton.setParams({ color: '#143F6B' }) //так изменяются все параметры
+
+    document.createTextNode(JSON.stringify(tg.themeParams))
+
+    tg.MainButton.show()
+    tg.onEvent('mainButtonClicked', function () {
+      tg.sendData('some string that we need to send')
+      //при клике на основную кнопку отправляем данные в строковом виде
+    })
   }
   console.log('first')
 </script>
