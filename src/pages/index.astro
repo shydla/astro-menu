@@ -3,18 +3,6 @@ import Checkbox from '../components/Checkbox.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<script>
-  declare global {
-    interface Window {
-      Telegram: any
-    }
-  }
-  let tg = window.Telegram.WebApp
-  const test = document.getElementById('test')
-  let div = document.createElement('div')
-  div.innerHTML = 'sssss' //tg.MainButton.text
-  test && test.appendChild(div)
-</script>
 <Layout>
   <h1 class='text-3xl text-center py-4'>Settings</h1>
   <div class='container'>
@@ -55,3 +43,20 @@ import Layout from '../layouts/Layout.astro'
     </ul>
   </div>
 </Layout>
+<script>
+  window.onload = function () {
+    // Ваш скрипт
+  }
+  declare global {
+    interface Window {
+      Telegram: any
+    }
+  }
+  let tg = window.Telegram.WebApp
+  window.onload = function () {
+    const test = document.getElementById('test')
+    let div = document.createElement('div')
+    div.innerHTML = 'sssss' //tg.MainButton.text
+    test && test.appendChild(div)
+  }
+</script>
