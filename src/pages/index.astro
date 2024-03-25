@@ -1,6 +1,12 @@
 ---
 import Checkbox from '../components/Checkbox.astro'
 import Layout from '../layouts/Layout.astro'
+declare global {
+  interface Window {
+    Telegram: any
+  }
+}
+let tg = window.Telegram.WebApp
 ---
 
 <Layout>
@@ -38,7 +44,7 @@ import Layout from '../layouts/Layout.astro'
           paid='true'
         />
       </li>
-      <li class='py-4 text-2xl'>Какая-то оплата</li>
+      <li class='py-4 text-2xl'>Какая-то оплата {tg.ThemeParams.bg_color}</li>
       <li></li>
     </ul>
   </div>
