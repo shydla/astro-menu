@@ -54,6 +54,7 @@ import Layout from '../layouts/Layout.astro'
     let test = document.getElementById('test')
     let div = document.createElement('div')
     div.innerHTML = 'sssss' //tg.MainButton.text
-    test && test.appendChild(div)
+
+    document.body.appendChild(div)
   }
 </script>
