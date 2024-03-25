@@ -1,12 +1,7 @@
 ---
 import Checkbox from '../components/Checkbox.astro'
 import Layout from '../layouts/Layout.astro'
-declare global {
-  interface Window {
-    Telegram: any
-  }
-}
-let tg = window.Telegram.WebApp
+const { tg } = Astro.props
 ---
 
 <Layout>
