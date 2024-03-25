@@ -11,9 +11,9 @@ import Layout from '../layouts/Layout.astro'
   }
   let tg = window.Telegram.WebApp
   const test = document.getElementById('test')
-  const value = document.createElement('div')
-  value.innerHTML = 'sssss' //tg.MainButton.text
-  test && test.appendChild(value)
+  let div = document.createElement('div')
+  div.innerHTML = 'sssss' //tg.MainButton.text
+  test && test.appendChild(div)
 </script>
 <Layout>
   <h1 class='text-3xl text-center py-4'>Settings</h1>
