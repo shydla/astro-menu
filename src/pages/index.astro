@@ -54,7 +54,10 @@ import Layout from '../layouts/Layout.astro'
   window.onload = function () {
     let test = document.getElementById('test')
     let div = document.createElement('div')
+    tg.ready()
     div.innerHTML = tg.MainButton.text
+    tg.MainButton.setText('Тест')
+    tg.MainButton.show()
 
     test && test.appendChild(div)
     console.log('two')
