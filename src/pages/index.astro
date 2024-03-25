@@ -44,9 +44,6 @@ import Layout from '../layouts/Layout.astro'
   </div>
 </Layout>
 <script>
-  window.onload = function () {
-    // Ваш скрипт
-  }
   declare global {
     interface Window {
       Telegram: any
@@ -54,7 +51,7 @@ import Layout from '../layouts/Layout.astro'
   }
   let tg = window.Telegram.WebApp
   window.onload = function () {
-    const test = document.getElementById('test')
+    let test = document.getElementById('test')
     let div = document.createElement('div')
     div.innerHTML = 'sssss' //tg.MainButton.text
     test && test.appendChild(div)
