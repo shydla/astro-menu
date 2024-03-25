@@ -1,0 +1,51 @@
+---
+import Checkbox from '../components/Checkbox.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout>
+  <h1 class='text-3xl text-center py-4'>Settings</h1>
+  <div class='container'>
+    <img
+      class='mx-auto'
+      src='settings.png'
+      alt='settings'
+    />
+    <ul>
+      <!-- 
+* виды настроек - что писать при удалении спама
+* использовать канал для обучения бота (да нет)
+* канал оплачен - (по умолчанию да)
+* оплатить канал (пока будет написано задонатить авторам)
+ -->
+      <li class='py-2 relative flex flex-col'>
+        <label
+          for='what'
+          class='display-block text-2xl mb-4'
+          >Ответ бота при удалении сообщения:</label
+        >
+        <textarea
+          class='border display-block rounded-3xl resize-none p-2'
+          name='what'
+          id='what'
+          rows='5'
+        ></textarea>
+      </li>
+      <li>
+        <Checkbox
+          name='learn'
+          question='Использовать канал для обучения?'
+        />
+      </li>
+      <li>
+        <Checkbox
+          name='paid'
+          question='Канал оплачен'
+          paid='true'
+        />
+      </li>
+      <li class='py-4 text-2xl'>Какая-то оплата</li>
+      <li></li>
+    </ul>
+  </div>
+</Layout>

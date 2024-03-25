@@ -1,0 +1,38 @@
+---
+interface Props {
+  name: string
+  question: string
+  paid?: string
+}
+
+const { name, question, paid } = Astro.props as Props
+---
+
+<style>
+  .checkbox__inp:checked + .checkbox__inner::before {
+    background-color: rgb(61, 186, 113);
+  }
+  .checkbox__inp:checked + .checkbox__inner::after {
+    background-color: white;
+    left: 12px;
+  }
+</style>
+<div class='py-4 flex items-center justify-between w-full'>
+  <label
+    class='checkbox w-full flex justify-between text-2xl'
+    for={name}
+  >
+    {question}
+
+    <input
+      class='checkbox__inp absolute opacity-0 w-0 h-0 appearance-none'
+      type='checkbox'
+      checked={paid === 'true'}
+      id={name}
+    />
+    <span
+      class='checkbox__inner inline-block relative text-sm p-2 before:block before:contents-[""] before:absolute before:left-0 before:top-0 before:w-[30px] before:h-[21px] before:rounded-full before:bg-gray-300 before:transition-all after:block after:contents-[""] after:absolute after:w-[15px] after:h-[15px] after:top-[3px] after:left-[3px] after:bg-green-500 after:rounded-full after:transition-all'
+    >
+    </span>
+  </label>
+</div>
