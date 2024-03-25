@@ -50,8 +50,8 @@ import Layout from '../layouts/Layout.astro'
       Telegram: any
     }
   }
-  let tg = window.Telegram.WebApp
   window.onload = function () {
+    let tg = window.Telegram.WebApp
     let test = document.getElementById('test')
     let div = document.createElement('div')
     tg.ready()
