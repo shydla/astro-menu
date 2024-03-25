@@ -1,9 +1,20 @@
 ---
 import Checkbox from '../components/Checkbox.astro'
 import Layout from '../layouts/Layout.astro'
-const { tg } = Astro.props
 ---
 
+<script>
+  declare global {
+    interface Window {
+      Telegram: any
+    }
+  }
+  let tg = window.Telegram.WebApp
+  const test = document.getElementById('test')
+  const value = document.createElement('div')
+  value.innerHTML = tg.initDataUnsafe.user.full_name
+  test && test.appendChild(value)
+</script>
 <Layout>
   <h1 class='text-3xl text-center py-4'>Settings</h1>
   <div class='container'>
@@ -39,8 +50,8 @@ const { tg } = Astro.props
           paid='true'
         />
       </li>
-      <li class='py-4 text-2xl'>Какая-то оплата {tg.MainButton.text}</li>
-      <li></li>
+      <li class='py-4 text-2xl'>Какая-то оплата</li>
+      <li id='test'></li>
     </ul>
   </div>
 </Layout>
