@@ -12,7 +12,10 @@ import Layout from '../layouts/Layout.astro'
       alt='settings'
     />
     <ul>
-      <li class='py-2 relative flex flex-col'>
+      <li
+        class='py-2 relative flex flex-col'
+        id='first'
+      >
         <label
           for='what'
           class='display-block text-2xl mb-4'
@@ -29,13 +32,15 @@ import Layout from '../layouts/Layout.astro'
         <Checkbox
           name='learn'
           question='Использовать канал для обучения?'
+          id='learn'
         />
       </li>
       <li>
         <Checkbox
           name='paid'
           question='Канал оплачен'
-          paid='true'
+          value='true'
+          id='paid'
         />
       </li>
       <li class='py-4 text-2xl'>Какая-то оплата</li>
@@ -52,18 +57,49 @@ import Layout from '../layouts/Layout.astro'
   }
   window.onload = function () {
     let tg = window.Telegram.WebApp
-    let test = document.getElementById('test')
-    let div = document.createElement('div')
-    tg.ready()
-    div.innerHTML = JSON.stringify(tg.initData)
-    tg.MainButton.setText('Сохранить настройки')
 
-    document.createTextNode(JSON.stringify(tg.themeParams))
+    let data = {
+      what: '',
+      learn: false,
+      paid: true,
+    }
+
+    const textarea = document.getElementById('what')
+    const learn = document.getElementById('learn')
+    const paid = document.getElementById('paid')
+
+    let first = document.getElementById('first')
+    let div = document.createElement('div')
+    div.innerHTML = JSON.stringify(data)
+    first?.appendChild(div)
+
+    textarea?.addEventListener('input', (e) => {
+      if (e.target) {
+        const target = e.target as HTMLTextAreaElement
+        data.what = target.value
+
+        div.innerHTML = JSON.stringify(data)
+      }
+    })
+
+    tg.ready()
 
     tg.MainButton.show()
     tg.onEvent('mainButtonClicked', function () {
+      const textarea = document.getElementById('what')
+      const learn = document.getElementById('learn')
+      const paid = document.getElementById('paid')
+      const taxtareaElement = textarea as HTMLTextAreaElement
+      const learnElement = learn as HTMLInputElement
+      const paidElement = paid as HTMLInputElement
+
+      const res = JSON.stringify({
+        what: taxtareaElement.value,
+        learn: learnElement.checked,
+        paid: paidElement.checked,
+      })
+      console.log(res)
       tg.sendData('some string that we need to send')
     })
   }
-  console.log('first')
 </script>
