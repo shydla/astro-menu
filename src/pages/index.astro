@@ -12,10 +12,7 @@ import Layout from '../layouts/Layout.astro'
       alt='settings'
     />
     <ul>
-      <li
-        class='py-2 relative flex flex-col'
-        id='first'
-      >
+      <li class='py-2 relative flex flex-col'>
         <label
           for='what'
           class='display-block text-2xl mb-4'
@@ -44,7 +41,6 @@ import Layout from '../layouts/Layout.astro'
         />
       </li>
       <li class='py-4 text-2xl'>Какая-то оплата</li>
-      <li id='test'></li>
     </ul>
   </div>
 </Layout>
@@ -67,20 +63,6 @@ import Layout from '../layouts/Layout.astro'
     const textarea = document.getElementById('what')
     const learn = document.getElementById('learn')
     const paid = document.getElementById('paid')
-
-    let first = document.getElementById('first')
-    let div = document.createElement('div')
-    div.innerHTML = JSON.stringify(data)
-    first?.appendChild(div)
-
-    textarea?.addEventListener('input', (e) => {
-      if (e.target) {
-        const target = e.target as HTMLTextAreaElement
-        data.what = target.value
-
-        div.innerHTML = JSON.stringify(data)
-      }
-    })
 
     tg.ready()
 
