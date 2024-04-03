@@ -98,8 +98,8 @@ import Layout from '../layouts/Layout.astro'
         learn: learnElement.checked,
         paid: paidElement.checked,
       })
-      console.log(res)
-      tg.sendData('some string that we need to send')
+
+      tg.sendData(res)
     })
   }
 </script>
